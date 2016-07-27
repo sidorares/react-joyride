@@ -138,6 +138,14 @@ export default class JoyrideTooltip extends React.Component {
         styles.tooltip.width = stepStyles.width;
       }
 
+      if (stepStyles.header) {
+        styles.header = Object.assign({}, styles.header, stepStyles.header);
+      }
+
+      if (stepStyles.footer) {
+        styles.header = Object.assign({}, styles.footer, stepStyles.footer);
+      }
+
       if (stepStyles.back) {
         styles.buttons.back = Object.assign({}, styles.buttons.back, stepStyles.back);
       }

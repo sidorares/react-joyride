@@ -57,7 +57,7 @@ function watchifyTask(options) {
 }
 
 gulp.task('scripts', function() {
-  return gulp.src('demo/scripts/**/*')
+  return gulp.src('src/scripts/**/*')
     .pipe($.babel())
     .pipe(gulp.dest('lib/scripts'));
 });
