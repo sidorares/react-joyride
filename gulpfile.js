@@ -75,7 +75,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('styles', function() {
-  return gulp.src('demo/styles/*.scss')
+  return gulp.src('src/styles/*.scss')
     .pipe(gulp.dest('lib/styles'))
     .pipe($.plumber())
     .pipe($.sass.sync({
