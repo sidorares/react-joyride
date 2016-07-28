@@ -98,6 +98,7 @@ export default class JoyrideTooltip extends React.Component {
       skip: {}
     };
 
+    console.log('STEP STYLES!!!', stepStyles);
     /* Styling */
     if (stepStyles) {
       if (stepStyles.backgroundColor) {
@@ -143,7 +144,7 @@ export default class JoyrideTooltip extends React.Component {
       }
 
       if (stepStyles.footer) {
-        styles.header = Object.assign({}, styles.footer, stepStyles.footer);
+        styles.footer = Object.assign({}, styles.footer, stepStyles.footer);
       }
 
       if (stepStyles.back) {
@@ -265,17 +266,18 @@ export default class JoyrideTooltip extends React.Component {
         <div
           className={`joyride-tooltip__triangle joyride-tooltip__triangle-${opts.positionClass}`}
           style={styles.arrow} />
-        <a
-          href="#"
-          className={`joyride-tooltip__close${(output.header ? ' joyride-tooltip__close--header' : '')}`}
-          style={styles.buttons.close}
-          data-type="close"
-          onClick={props.onClick}>×</a>
+
         {output.header}
         {output.main}
-        <div className="joyride-tooltip__footer">
-          {output.skip}
+        <div className="joyride-tooltip__footer" style={styles.footer}>
+          {/*output.skip*/}
           {output.secondary}
+          <a
+            href="#"
+            className={`joyride-tooltip__close${(output.header ? ' joyride-tooltip__close--header' : '')}`}
+            style={styles.buttons.close}
+            data-type="close"
+            onClick={props.onClick}>hide tips</a>
           <a
             href="#"
             className="joyride-tooltip__button joyride-tooltip__button--primary"

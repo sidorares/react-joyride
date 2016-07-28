@@ -561,6 +561,8 @@ export default class Joyride extends React.Component {
     const props = this.props;
     const newIndex = (index !== undefined ? index : this.state.index);
 
+    console.log('toggleTooltip:action: ', action);
+
     this.setState({
       play: props.steps[newIndex] ? this.state.play : false,
       showTooltip: show,
@@ -583,6 +585,17 @@ export default class Joyride extends React.Component {
           });
         }
       }
+
+      if (action && props.steps[newIndex]) {
+        if (typeof props.callback === 'function') {
+          props.callback({
+            action,
+            type: 'step:before',
+            step: props.steps[newIndex]
+          });
+        }
+      }
+
 
       if (props.steps.length && !props.steps[index]) {
         if (typeof props.completeCallback === 'function') { // Deprecated
@@ -622,6 +635,8 @@ export default class Joyride extends React.Component {
     if (!target) {
       return;
     }
+
+    target.scrollIntoView();
 
     if (step && (state.tooltip || (state.play && props.steps[state.index]))) {
       const offsetX = nested.get(step, 'style.beacon.offsetX') || 0;
