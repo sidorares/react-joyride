@@ -563,6 +563,18 @@ export default class Joyride extends React.Component {
 
     console.log('toggleTooltip:action: ', action);
 
+    if (action && props.steps[newIndex]) {
+      if (typeof props.callback === 'function') {
+        props.callback({
+          action,
+          type: 'step:before',
+          step: props.steps[newIndex]
+        });
+      }
+    }
+
+// setTimeout( () => {
+
     this.setState({
       play: props.steps[newIndex] ? this.state.play : false,
       showTooltip: show,
@@ -586,16 +598,6 @@ export default class Joyride extends React.Component {
         }
       }
 
-      if (action && props.steps[newIndex]) {
-        if (typeof props.callback === 'function') {
-          props.callback({
-            action,
-            type: 'step:before',
-            step: props.steps[newIndex]
-          });
-        }
-      }
-
 
       if (props.steps.length && !props.steps[index]) {
         if (typeof props.completeCallback === 'function') { // Deprecated
@@ -612,6 +614,9 @@ export default class Joyride extends React.Component {
         }
       }
     });
+
+//}, 200);
+
   }
 
   /**
@@ -636,6 +641,7 @@ export default class Joyride extends React.Component {
       return;
     }
 
+    // =====
     target.scrollIntoView();
 
     if (step && (state.tooltip || (state.play && props.steps[state.index]))) {

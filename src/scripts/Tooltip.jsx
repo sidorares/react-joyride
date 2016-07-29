@@ -98,7 +98,6 @@ export default class JoyrideTooltip extends React.Component {
       skip: {}
     };
 
-    console.log('STEP STYLES!!!', stepStyles);
     /* Styling */
     if (stepStyles) {
       if (stepStyles.backgroundColor) {
